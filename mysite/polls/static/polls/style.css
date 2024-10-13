@@ -24,6 +24,7 @@ li a:hover{
 button{
     border-radius: 5px;
     cursor: pointer;
+    font-size: x-large;
 }
 
 button:hover{
@@ -39,5 +40,19 @@ button:hover{
     background-color: rgb(152, 0, 0);
     color: #ffffff;
 }
+
+h3{
+    font-size: x-large;
+}
+
+input{
+    font-size: x-large;
+}
+
+label{
+    font-size: x-large;
+}
+
+
 
 
