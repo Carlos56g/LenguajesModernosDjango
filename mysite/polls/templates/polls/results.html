@@ -15,6 +15,7 @@
         <li>{{ choice.choice_text}} -- {{choice.votes}} vote{{choice.votes|pluralize}}</li>
         {% endfor %}
     </ul>
-    <a href="{% url 'polls:detail' question.id %}">Vote again?</a>
+    <button onclick="window.location.href='{% url 'polls:detail' question.id %}'" class="editButton">Vote Again</button>
+    <button type="button" onclick="window.location.href='{% url 'polls:index' %}'" >Index</button>
 </body>
 </html>
