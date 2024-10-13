@@ -1,7 +1,43 @@
 li a {
-    color: green;
+    font-size: x-large;
+    color: rgb(0, 0, 0);
 }
 
-body {
-    background: white url("images/background.png") no-repeat;
+li a:hover{
+    color: #006aff;
 }
+
+.addQuestion{
+    padding: 10px;
+}
+
+.addQuestion button{
+    font-size: x-large;
+}
+
+.editButton img{
+    width: 10px;
+    height: 15px;
+}
+
+
+button{
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: #0030aa;
+    color: #ffffff;
+}
+
+ button.deleteButton{
+    background-color: rgb(255, 155, 155);
+}
+
+ button.deleteButton:hover{
+    background-color: rgb(152, 0, 0);
+    color: #ffffff;
+}
+
+

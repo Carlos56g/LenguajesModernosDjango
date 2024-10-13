@@ -1,3 +1,5 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'polls/style.css' %}">
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +18,9 @@
                 <label for="choice{{ forloop.counter}}">{{choice.choice_text}}</label><br>
                 {% endfor %}
         </fieldset>
-        <input type="submit" value="Vote">
+        <button type="submit">Vote</button>
     </form>
+    <br>
+    <button type="button" onclick="window.location.href='{% url 'polls:index' %}'" >Index</button>
 </body>
 </html>

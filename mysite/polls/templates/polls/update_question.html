@@ -1,0 +1,60 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'polls/style.css' %}">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Detail</title>
+</head>
+<body>
+    <form action="{% url 'polls:putQuestion' question.id %}" method="post">
+        {% csrf_token %}
+        <h3>Question Text:</h3><input type="text" name="question_text" value="{{ question.question_text }}">
+
+        <h3>Question Date:</h3><input type="date" name="pub_date" value="{{ question.pub_date|date:'Y-m-d' }}">
+
+        <h3>Choices: </h3>
+        <p>If you want to delete a Choice, just leave it on blank</p>
+            <ul id="choice-list">
+
+                {% for choice in question.choice_set.all %}
+                <li><input name= "choice_text" type="text" value="{{choice.choice_text}}"></li>
+                {% endfor %}
+
+            </ul>
+        <input type="text" name="question_choice" id="choice_text_input">
+        <button type="button" id="addChoice">Add Choice</button>
+
+        <br><br>
+        <button type="submit" value="Update" name="action">Commit Changes</button>
+        <button type="submit" value="Delete" name="action" onclick="return confirmDelete()" class="deleteButton">Delete Question</button>
+    </form>
+    <br><br>
+    <button type="button" onclick="window.location.href='{% url 'polls:index' %}'" >Cancel</button>
+</body>
+</html>
+
+<script>
+    document.getElementById('addChoice').onclick = function () {
+        var choice_text=document.getElementById('choice_text_input').value
+        if(choice_text){
+            var li=document.createElement('li');
+
+            var input=document.createElement('input')
+            input.type='input'
+            input.name='choice_text'
+            input.value = choice_text
+
+            var container = document.getElementById('choice-list')
+            li.appendChild(input)
+            container.appendChild(li)
+            
+            document.getElementById('choice_text_input').value = '';
+        }
+    };
+
+    function confirmDelete() {
+        return confirm("You are going to DELETE this question. Are you sure?")
+    };
+</script>
